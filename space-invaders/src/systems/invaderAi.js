@@ -20,10 +20,9 @@ const invaderAi = (entityManager) => {
    * Simulate
    * @param  {object} entity
    * @param  {number} i
-   * @param  {object[]} entityList
    * @return {object}
    */
-  function simulate(entity, i, entityList) {
+  function simulate(entity, i) {
     updatePatrol(entity);
 
     return entity;
