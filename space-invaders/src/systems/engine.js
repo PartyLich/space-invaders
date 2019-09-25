@@ -1,5 +1,7 @@
 // Main game object
 // ----------------
+import { pipe } from '../lib/lib';
+
 import createEntityManager from './entityManager';
 import createGraphics from './graphics';
 
@@ -35,12 +37,19 @@ const Engine = function () {
   const entityManager = createEntityManager();
   const graphics = createGraphics(gameSize);
 
+  // Simulation processing pipeline.
+  const simulate = pipe(
+      // Draw game entities
+      graphics.draw(screen)
+  );
+
   // Main game tick function.  Loops forever, running 60ish times a second.
   const tick = function () {
     // Clear away the drawing from the previous tick.
     graphics.clearScreen(screen);
 
     // Update game state.
+    entityManager.all().forEach(simulate);
 
     // Queue up the next call to tick with the browser.
     requestAnimationFrame(tick);
