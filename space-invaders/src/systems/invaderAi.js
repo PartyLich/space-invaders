@@ -29,8 +29,15 @@ const invaderAi = (entityManager) => {
     return entity;
   }
 
+  /**
+   * @param  {object[]} entityList an array of entities
+   * @return {object[]} a new array of updated entities
+   */
+  const simulateEntities = (entityList) => entityList.map(simulate);
+
   return Object.assign({}, {
     simulate,
+    simulateEntities,
   });
 };
 
