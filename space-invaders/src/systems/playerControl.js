@@ -1,3 +1,5 @@
+import { pipe } from '../lib/lib';
+
 const PlayerControl = (entityManager, keyboarder, shootSound) => {
   /**
    * Respond to player movement input
@@ -20,7 +22,15 @@ const PlayerControl = (entityManager, keyboarder, shootSound) => {
     return entity;
   }
 
+  /**
+   * updates the state of the player for a single tick.
+   */
+  const simulate = pipe(
+      move
+  );
+
   return {
+    simulate,
   };
 };
 
