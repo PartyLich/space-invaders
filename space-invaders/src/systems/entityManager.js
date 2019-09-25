@@ -28,9 +28,18 @@ const createEntityManager = () => {
     }
   }
 
+  /**
+   * Remove an entity
+   * @param  {number} entity entity id
+   */
+  function remove(entity) {
+    entities.delete(entity);
+  }
+
   return {
     get,
     add,
+    remove,
   };
 };
 
