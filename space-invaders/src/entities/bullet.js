@@ -10,7 +10,7 @@ import createMoveable from '../components/moveable';
  * @return {object}
  */
 const Bullet = function (center, velocity) {
-  const size = {x: 3, y: 3};
+  const size = { x: 3, y:  3};
 
   return Object.assign(
       {},
