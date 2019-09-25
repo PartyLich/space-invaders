@@ -15,8 +15,22 @@ const createEntityManager = () => {
     return entities.get(entity);
   }
 
+  /**
+   * Add a new entity
+   * @param {object|object[]} entityList
+   */
+  function add(entityList) {
+    entityList = [].concat(entityList);
+    for (const entity of entityList) {
+      entity.id = nextId;
+      nextId++;
+      entities.set(entity.id, entity);
+    }
+  }
+
   return {
     get,
+    add,
   };
 };
 
