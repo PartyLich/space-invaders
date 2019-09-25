@@ -7,6 +7,8 @@ import createGraphics from './graphics';
 import createPhysics from './physics';
 import createInvaderAi from './invaderAi';
 import createCollisionSystem from './collision';
+import Input from './input';
+import PlayerControl from './playerControl';
 
 import createInvader from '../entities/invader';
 import createPlayer from '../entities/player';
@@ -71,6 +73,8 @@ const Engine = function () {
   const physics = createPhysics();
   const invaderAi = createInvaderAi(entityManager);
   const collision = createCollisionSystem(entityManager, gameSize);
+  const input = Input();
+  const playerControl = PlayerControl(entityManager, input, shootSound);
 
   // Entities contain all of the data that systems operate upon.
   // Add the invaders to the entity manager
@@ -81,6 +85,8 @@ const Engine = function () {
 
   // Simulation processing pipeline.
   const simulate = pipe(
+      // User input
+      playerControl.simulate,
       // Invader AI
       invaderAi.simulate,
       // Move entities
