@@ -28,9 +28,19 @@ const Graphics = function (gameSize) {
     return entity;
   };
 
+  /**
+   * draw a list of drawable entities
+   * @param  {CanvasRenderingContext2D} screen the drawing context
+   * @param  {object[]} entityList array of drawable objects
+   * @return {array}
+   */
+  const drawEntities = (screen) =>
+    (entityList) => entityList.map(draw(screen));
+
   return {
     clearScreen,
     draw,
+    drawEntities,
   };
 };
 
