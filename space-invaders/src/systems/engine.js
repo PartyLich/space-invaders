@@ -6,6 +6,7 @@ import createEntityManager from './entityManager';
 import createGraphics from './graphics';
 import createPhysics from './physics';
 import createInvaderAi from './invaderAi';
+import createCollisionSystem from './collision';
 
 import createInvader from '../entities/invader';
 
@@ -68,6 +69,7 @@ const Engine = function () {
   const graphics = createGraphics(gameSize);
   const physics = createPhysics();
   const invaderAi = createInvaderAi(entityManager);
+  const collision = createCollisionSystem(entityManager, gameSize);
 
   // Entities contain all of the data that systems operate upon.
   // Add the invaders to the entity manager
@@ -79,6 +81,10 @@ const Engine = function () {
       invaderAi.simulate,
       // Move entities
       physics.move,
+      // Collision detection
+      collision.removeCollided(entityManager.entityArray()),
+      // Boundary checks
+      collision.removeOutOfBounds,
       // Draw game entities
       graphics.draw(screen)
   );
