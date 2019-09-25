@@ -36,10 +36,17 @@ const createEntityManager = () => {
     entities.delete(entity);
   }
 
+  /**
+   * return complete entity map
+   * @return {Map} Map of entities
+   */
+  const all = () => entities;
+
   return {
     get,
     add,
     remove,
+    all,
   };
 };
 
