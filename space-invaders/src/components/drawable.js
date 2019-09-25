@@ -1,11 +1,18 @@
-import createCoord from './coord';
-
+/**
+ * @param {object} center
+ * @param  {number} center.x
+ * @param  {number} center.y
+ * @param {object} size
+ * @param  {number} size.x
+ * @param  {number} size.y
+ * @return {object}
+ */
 const createDrawable = (
-    center = createCoord(),
-    size = createCoord()
+    { x = 0, y = 0 } = {},
+    { x: sizeX = 0, y: sizeY = 0 } = {}
 ) => ({
-  center,
-  size,
+  center: { x, y },
+  size: { x: sizeX, y: sizeY },
   isDrawable: true,
 });
 
