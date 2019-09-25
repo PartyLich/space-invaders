@@ -1,5 +1,6 @@
 // Main game object
 // ----------------
+import createEntityManager from './entityManager';
 
 /**
  * Get the drawing context.  This contains functions that let you draw
@@ -27,6 +28,10 @@ const Engine = function () {
   // In index.html, there is an audio tag that loads the shooting sound.
   // Get the shoot sound from the DOM and store it on the game object.
   const shootSound = document.getElementById('shoot-sound');
+
+  // Systems contain all of our implementation and logic
+  // Create the entity manager to hold the player, invaders, bullets etc
+  const entityManager = createEntityManager();
 
   // Main game tick function.  Loops forever, running 60ish times a second.
   const tick = function () {
