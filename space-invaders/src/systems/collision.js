@@ -19,8 +19,23 @@ const Collision = function (entityManager, gameSize) {
     entity.center.y > gameSize.y
   );
 
+  /**
+   * Remove any entity outside the game screen
+   * @param  {object} entity
+   * @return {object}
+   */
+  const removeOutOfBounds = (entity) => {
+    // Passthrough any dead or in bounds entities
+    if (entity.isDead || inBounds(entity)) return entity;
+
+    entityManager.remove(entity.id);
+    // Return an object for any later functions in the pipeline
+    return { isDead: true, id: entity.id };
+  };
+
   return {
     inBounds,
+    removeOutOfBounds,
   };
 };
 
