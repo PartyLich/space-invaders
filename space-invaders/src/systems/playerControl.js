@@ -68,8 +68,16 @@ const PlayerControl = (entityManager, keyboarder, shootSound) => {
       fire
   );
 
+  /**
+   * updates array of entities for a single tick
+   * @param {object[]} entityList
+   * @return {object[]}
+   */
+  const simulateList = (entityList) => entityList.map(simulate);
+
   return {
     simulate,
+    simulateList,
   };
 };
 
