@@ -1,6 +1,7 @@
 // Main game object
 // ----------------
 import createEntityManager from './entityManager';
+import createGraphics from './graphics';
 
 /**
  * Get the drawing context.  This contains functions that let you draw
@@ -32,10 +33,12 @@ const Engine = function () {
   // Systems contain all of our implementation and logic
   // Create the entity manager to hold the player, invaders, bullets etc
   const entityManager = createEntityManager();
+  const graphics = createGraphics(gameSize);
 
   // Main game tick function.  Loops forever, running 60ish times a second.
   const tick = function () {
     // Clear away the drawing from the previous tick.
+    graphics.clearScreen(screen);
 
     // Update game state.
 
