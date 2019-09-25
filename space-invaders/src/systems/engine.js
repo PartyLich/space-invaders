@@ -93,7 +93,7 @@ const Engine = function () {
       // Move entities
       physics.move,
       // Collision detection
-      collision.removeCollided(entityManager.entityArray()),
+      collision.removeCollided,
       // Boundary checks
       collision.removeOutOfBounds,
       // Draw game entities

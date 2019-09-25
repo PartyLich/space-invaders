@@ -37,17 +37,23 @@ const Collision = function (entityManager, gameSize) {
    * @param {array} arr
    * @return {boolean}  true if passed entity is not colliding with anything
    */
-  const notCollidingWithAnything = (b1, arr) =>
-    arr.filter((b2) => colliding(b1, b2));
+  const notCollidingWithAnything = (b1) => {
+    const results = [];
+    for (const [_, entity] of entityManager.all()) {
+      if (colliding(b1, entity)) {
+        results.push(b1, entity);
+      }
+    }
+    return results;
+  };
 
   /**
    * Remove any entity that has collided
-   * @param  {array} entityList
    * @param  {object} entity
    * @return {object}
    */
-  const removeCollided = (entityList) => (entity) => {
-    const colliders = notCollidingWithAnything(entity, entityList);
+  const removeCollided = (entity) => {
+    const colliders = notCollidingWithAnything(entity);
     if (entity.isDead || colliders.length === 0) {
       return entity;
     }

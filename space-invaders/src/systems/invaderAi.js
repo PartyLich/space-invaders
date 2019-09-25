@@ -61,7 +61,7 @@ const invaderAi = (entityManager) => {
       // downward...
       const bulletCenter = {
         x: entity.center.x,
-        y: entity.center.y + entity.size.y / 2,
+        y: entity.center.y + entity.size.y / 2 + 4,
       };
       const bulletVelocity = { x: 0, y: 2 };
       const bullet = Bullet(bulletCenter, bulletVelocity);
