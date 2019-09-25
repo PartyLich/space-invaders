@@ -9,6 +9,7 @@ import createInvaderAi from './invaderAi';
 import createCollisionSystem from './collision';
 
 import createInvader from '../entities/invader';
+import createPlayer from '../entities/player';
 
 /**
  * Get the drawing context.  This contains functions that let you draw
@@ -74,6 +75,9 @@ const Engine = function () {
   // Entities contain all of the data that systems operate upon.
   // Add the invaders to the entity manager
   entityManager.add(createInvaders(INVADER_COUNT));
+
+  // Add the player to the entity manager
+  entityManager.add(createPlayer(gameSize));
 
   // Simulation processing pipeline.
   const simulate = pipe(
