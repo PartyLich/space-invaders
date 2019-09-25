@@ -4,6 +4,7 @@ import { pipe } from '../lib/lib';
 
 import createEntityManager from './entityManager';
 import createGraphics from './graphics';
+import createPhysics from './physics';
 
 import createInvader from '../entities/invader';
 
@@ -64,6 +65,7 @@ const Engine = function () {
   // Create the entity manager to hold the player, invaders, bullets etc
   const entityManager = createEntityManager();
   const graphics = createGraphics(gameSize);
+  const physics = createPhysics();
 
   // Entities contain all of the data that systems operate upon.
   // Add the invaders to the entity manager
@@ -71,6 +73,8 @@ const Engine = function () {
 
   // Simulation processing pipeline.
   const simulate = pipe(
+      // Move entities
+      physics.move,
       // Draw game entities
       graphics.draw(screen)
   );
