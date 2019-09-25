@@ -42,11 +42,18 @@ const createEntityManager = () => {
    */
   const all = () => entities;
 
+  /**
+   * Return entities as an Array
+   * @return {object[]} array of entities
+   */
+  const entityArray = () => Array.from(entities.values());
+
   return {
     get,
     add,
     remove,
     all,
+    entityArray,
   };
 };
 
