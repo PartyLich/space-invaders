@@ -60,6 +60,7 @@ const Engine = function () {
   // place game entities.
   const gameSize = { x: canvas.width, y: canvas.height };
 
+  // Get the drawing context
   const screen = getScreen();
 
   // In index.html, there is an audio tag that loads the shooting sound.
