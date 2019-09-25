@@ -22,8 +22,16 @@ const Physics = function () {
     return entity;
   };
 
+  /**
+   * Update the position of all entities in array
+   * @param  {array} entities array of entity objects
+   * @return {array}    a new array of updated objects
+   */
+  const moveEntities = (entities) => entities.map(move);
+
   return {
     move,
+    moveEntities,
   };
 };
 
