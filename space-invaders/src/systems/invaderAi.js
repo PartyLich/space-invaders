@@ -48,6 +48,7 @@ const invaderAi = (entityManager) => {
    * @param  {array} entityList
    */
   function fire(entity, i) {
+    if (!entity.aiControlled) return;
     const entityArr = entityManager.entityArray()
     i = i || entityArr.indexOf(entity);
     const shotRoll = Math.random() > 0.995;
