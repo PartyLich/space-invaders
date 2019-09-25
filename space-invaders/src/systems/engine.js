@@ -5,6 +5,7 @@ import { pipe } from '../lib/lib';
 import createEntityManager from './entityManager';
 import createGraphics from './graphics';
 import createPhysics from './physics';
+import createInvaderAi from './invaderAi';
 
 import createInvader from '../entities/invader';
 
@@ -66,6 +67,7 @@ const Engine = function () {
   const entityManager = createEntityManager();
   const graphics = createGraphics(gameSize);
   const physics = createPhysics();
+  const invaderAi = createInvaderAi(entityManager);
 
   // Entities contain all of the data that systems operate upon.
   // Add the invaders to the entity manager
@@ -73,6 +75,8 @@ const Engine = function () {
 
   // Simulation processing pipeline.
   const simulate = pipe(
+      // Invader AI
+      invaderAi.simulate,
       // Move entities
       physics.move,
       // Draw game entities
