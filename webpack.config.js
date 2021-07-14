@@ -1,7 +1,9 @@
 // Imports: Dependencies
 const path = require('path');
-// const htmlWebpackPlugin = require('html-webpack-plugin')
-// require('@babel/register');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 // Webpack Configuration
 const config = {
@@ -30,17 +32,30 @@ const config = {
       },
       // CSS Files
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|gif|jshaml)$/,
+        test: /\.(png|svg|jpg|gif|jshaml|mp3)$/,
         use: ['file-loader'],
       },
     ],
   },
   // Plugins
-  plugins: [],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+    }),
+    new CopyPlugin({
+      patterns: [{ from: 'public' }],
+    }),
+    new MiniCssExtractPlugin(),
+  ],
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin(),
+    ],
+  },
 
   // OPTIONAL
   // Reload On File Change
