@@ -1,5 +1,8 @@
 import Engine from './systems/engine';
 
+import _styles from './main.css';
+
+
 (function () {
   // When the DOM is ready, create (and start) the game.
   window.addEventListener('load', function () {
