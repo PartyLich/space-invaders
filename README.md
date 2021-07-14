@@ -1,23 +1,17 @@
-# Annotated code
-
-A series of short, heavily annotated JavaScript programs.
-
-* By Mary Rose Cook
-* http://maryrosecook.com
-* maryrosecook@maryrosecook.com
-
 ## Space Invaders
 
-Demonstrates an animation loop, collision detection, keyboard input, drawing to the canvas and playing sounds.
+Rewrite of a simple Space Invaders clone which demonstrates an animation loop,
+collision detection, keyboard input, drawing to the canvas and playing sounds.
+
+This version uses **e**ntities, **c**omponents, and **s**ystems to accomplish the same result.
+This readme was updated nearly 2 years after the rewrite. I don't entirely remember
+writing the code at all, but I *assume* I did so do improve my understanding of ECS.
 
 ![A screenshot of Space Invaders](/space-invaders/screenshot.gif)
 
-To read the annotated source, open `/space-invaders/docs/space-invaders.html` in your browser.
+# Annotated code
 
-## Circles bouncing off lines
+This was forked and rewritten from one of the samples in 'Annotated Code' by
+Mary Rose Cook.
 
-Demonstrates some simple trig that calculates the movement of circles as they bounce off lines.
-
-![An animation of circles bouncing off lines](/circles-bouncing-off-lines/screenshot.gif)
-
-To read the annotated source, open `/circles-bouncing-off-lines/docs/circles-bouncing-off-lines.html` in your browser.
+* [http://maryrosecook.com](http://maryrosecook.com)
